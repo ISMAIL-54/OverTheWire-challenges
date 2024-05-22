@@ -8,3 +8,5 @@ run the following command: **cat readme**
 After logging into bandit1, the password is stored in a file named "-". To view the contents of the file,
 we need to specify the full path to it: **cat ./-**
 ![bandit1](./Img/bandit/bandit1.png)
+
+-------------------------------------------------------------------
