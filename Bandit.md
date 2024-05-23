@@ -14,8 +14,8 @@ we need to specify the full path to it: **cat ./-**
   
 ![bandit1](./Img/Bandit/bandit1.png)  
     
-    **User:** bandit2
-    **Password:** rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi  
+> **User:** bandit2
+> **Password:** rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi  
       
 -------------------------------------------------------------------
 ### Level 2 &rarr; Level 3
@@ -24,8 +24,8 @@ so to view the content of the file, we need to escape the spaces using the back-
   
 ![bandit2](./Img/Bandit/bandit2.png)  
 
-    **User:** bandit3
-    **Password:** aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG  
+> **User:** bandit3
+> **Password:** aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG  
 
 -------------------------------------------------------------------
 ### Level 3 &rarra; Level 4
