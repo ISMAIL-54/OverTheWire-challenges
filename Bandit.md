@@ -30,9 +30,9 @@ of the file, we need to escape the spaces using the back-slach escape character:
 -------------------------------------------------------------------
 ### Level 3 &rarr; Level 4
 As indicated on the website, the password is stored in a hidden file in the **inhere** directory, so I performed the following actions:  
-- change location to the inhere directory: **cd inhere**  
-- display directory contents, including hidden directories and files: **ls -a**  
-- display contents of hidden file: **cat .hidden**  
+- Change location to the **inhere** directory: **cd inhere**  
+- Display directory contents, including hidden directories and files: **ls -a**  
+- Display contents of the hidden file: **cat .hidden**  
 
 ![bandit3](./Img/Bandit/bandit03.png)
 
@@ -41,10 +41,11 @@ As indicated on the website, the password is stored in a hidden file in the **in
 
 -------------------------------------------------------------------
 ### Level 4 &rarr; Level 5
-Once connected to bandit4, the password is stored in the only human-readable file in the **inhere** directory (as mentioned on the website).   
-I changed the location to **inhere** directory, I listed the contents of the directory, I see that there are many files starting with **-file**   
-followed by a number, in order to identify the human-readable file, I executed this command which tells me the type of each file: <strong>file ./*</strong>  
-I can see that the file -file07 is the right one, so I printed its contents.  
+Once connected to **bandit4**, the password is stored in the only human-readable file in the **inhere** directory (as mentioned  
+on the website). I changed the location to **inhere** directory and listed the contents of the directory, I see that there are  
+many files starting with **-file** followed by a number, in order to identify the human-readable file, I executed this command  
+which tells me the type of each file: <strong>file ./*</strong>  
+I can see that the file **-file07** is the right one, so I printed its contents.  
   
 ![bandit4](./Img/Bandit/bandit04.png)
 
