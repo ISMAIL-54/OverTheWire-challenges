@@ -34,7 +34,7 @@ As indicated on the website, the password is stored in a hidden file in the **in
 - Display directory content, including hidden directories and files: **ls -a**  
 - Display content of the hidden file: **cat .hidden**  
 
-![bandit03](./Img/Bandit/bandit03.png)
+![bandit03](./Img/Bandit/bandit03.png)  
 
     User: bandit4
     Password: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe  
@@ -47,7 +47,7 @@ many files starting with **-file** followed by a number, in order to identify th
 which tells me the type of each file: <strong>file ./*</strong> 
 I can see that the file **-file07** is the right one, so I printed its contents.
   
-![bandit04](./Img/Bandit/bandit04.png)
+![bandit04](./Img/Bandit/bandit04.png)  
 
     User: bandit5
     Password: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
@@ -58,13 +58,29 @@ The instructions on the website clearly indicated that the password is stored so
 with the following characteristics:  
 - human-readable
 - 1033 bytes in size
-- not executable  
+- not executable   
 Here are the steps I followed:  
 - Find the file in the current directory with a size of 1033 bytes with the following command: **du -ab | grep 1033**
 - Check file permissions, it must not be executable: **ls -l inhere/maybehere07/.file02**
 - Check whether the file contains human-readable data (text): **file inhere/maybehere07/.file02**
-  
-![bandit05](./Img/Bandit/bandit05.png)
+
+![bandit05](./Img/Bandit/bandit05.png)  
 
     User: bandit6
     Password: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+  
+-------------------------------------------------------------------
+### Level 6 &rarr; Level 7
+As explained on the website, the password for the next level is stored somewhere on the server in a file with the following properties:
+- owned by user bandit7
+- owned by group bandit6
+- 33 bytes in size
+
+To find the required file, we need to use the find command, specifying all properties in the options and redirecting access errors to the null device in order to obtain a clean, concise result as shown in the picture below:  
+
+![bandit6](./Img/Bandit/bandit06.png)  
+
+    User: bandit7
+    Password: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S  
+  
+------------------------------------------------------------------
