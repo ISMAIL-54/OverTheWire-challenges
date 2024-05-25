@@ -76,7 +76,7 @@ As explained on the website, the password for the next level is stored somewhere
 - owned by group bandit6
 - 33 bytes in size
 
-To find the required file, we need to use the find command, specifying all properties in the options and redirecting access errors to the null device in order to obtain a clean, concise result as shown in the picture below:  
+To find the required file, we need to use the **find** command, starting the search from the **root** directory (/), specifying all properties in the options and redirecting access errors to the null device in order to obtain a clean, concise result as shown in the picture below:  
 
 ![bandit6](./Img/Bandit/bandit06.png)  
 
