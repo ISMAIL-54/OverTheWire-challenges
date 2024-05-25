@@ -97,7 +97,7 @@ I printed out the content of the file and piped the output to the **grep** comma
 ### Level 8 &rarr; Level 9
 The password in a file in the home directory named **data.txt**, the file contains many lines but the password is the only line of text that appears only once. I therefore sorted the file in ascending alphabetical order, then printed only the unique lines, obtaining an output of a single line containing the password:  
   
-![[bandit8](/Img/Bandit/bandit08.png)
+![bandit8](/Img/Bandit/bandit08.png)
 
     User bandit9
     Password: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
