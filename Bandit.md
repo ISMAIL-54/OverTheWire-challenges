@@ -44,8 +44,7 @@ As indicated on the website, the password is stored in a hidden file in the **in
 Once connected to **bandit4**, the password is stored in the only human-readable file in the **inhere** directory (as mentioned
 on the website). I changed the location to **inhere** directory and listed the contents of the directory, I see that there are
 many files starting with **-file** followed by a number, in order to identify the human-readable file, I executed this command
-which tells me the type of each file: <strong>file ./*</strong> 
-I can see that the file **-file07** is the right one, so I printed its contents.
+which tells me the type of each file: <strong>file ./*</strong> .I can see that the file **-file07** is the right one, so I printed its contents.
   
 ![bandit04](./Img/Bandit/bandit04.png)  
 
@@ -59,6 +58,7 @@ with the following characteristics:
 - human-readable
 - 1033 bytes in size
 - not executable   
+  
 Here are the steps I followed:  
 - Find the file in the current directory with a size of 1033 bytes with the following command: **du -ab | grep 1033**
 - Check file permissions, it must not be executable: **ls -l inhere/maybehere07/.file02**
@@ -84,3 +84,12 @@ To find the required file, we need to use the **find** command, starting the sea
     Password: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S  
   
 ------------------------------------------------------------------
+### Level 7 &rarr; Level 8
+The password for the next level is in the **data.txt** file next to the word **millionth**.  
+I printed out the content of the file and sent the output to the grep command, looking for the word **millionth**.  
+  
+![bandit7](/Img/Bandit/Bandit07.png)  
+  
+    User: bandit8
+    Password: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+  
