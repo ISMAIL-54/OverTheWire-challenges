@@ -88,7 +88,7 @@ To find the required file, we need to use the **find** command, starting the sea
 The password for the next level is in the **data.txt** file next to the word **millionth**.  
 I printed out the content of the file and sent the output to the grep command, looking for the word **millionth**.  
   
-![bandit7](/Img/Bandit/Bandit07.png)  
+![bandit7](/Img/Bandit/Bandit08.png)  
   
     User: bandit8
     Password: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
