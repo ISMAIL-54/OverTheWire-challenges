@@ -103,3 +103,12 @@ The password in a file in the home directory named **data.txt**, the file contai
     Password: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
   
 ------------------------------------------------------------------
+### Level 9 &rarr; Level 10
+The password is located in the file **data.txt**, which doesn't contain text but data, as you can see by executing the following command: **file data.txt**, so we need to use the **strings** command to print all the printable characters in this file, then we need to grep the lines containing the password pattern "preceeded by several **=** characters", which means that the line containing the password contains several (2 or more) **=** characters followed by the password, the password is made up of numbers and letters (upper and lower case): **grep -E "={2,} ?[[:alnum]]"**  
+  
+![bandit9](/Img/Bandit/bandit09.png)  
+  
+    User: bandit10  
+    Password: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s  
+  
+------------------------------------------------------------------
