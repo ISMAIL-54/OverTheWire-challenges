@@ -5,7 +5,7 @@ To display the content of the file, run the following command: **cat readme**
 ![bandit00](./Img/Bandit/bandit00.png)  
 
     User: bandit1
-    Password: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL  
+    Password: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
       
 -------------------------------------------------------------------
 ### Level 1 &rarr; Level 2  
@@ -15,7 +15,7 @@ we need to specify the full path to it: **cat ./-**
 ![bandit01](./Img/Bandit/bandit01.png)  
     
     User: bandit2  
-    Password: rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi  
+    Password: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
       
 -------------------------------------------------------------------
 ### Level 2 &rarr; Level 3
@@ -25,31 +25,31 @@ of the file, we need to escape the spaces using the back-slach escape character:
 ![bandit02](./Img/Bandit/bandit02.png)  
 
     User: bandit3  
-    Password: aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG  
+    Password: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx  
 
 -------------------------------------------------------------------
 ### Level 3 &rarr; Level 4
 As indicated on the website, the password is stored in a hidden file in the **inhere** directory, so I performed the following actions:  
 - Change location to the **inhere** directory: **cd inhere**  
 - Display directory content, including hidden directories and files: **ls -a**  
-- Display content of the hidden file: **cat .hidden**  
+- Display content of the hidden file: **cat ...Hiding-From-You**  
 
 ![bandit03](./Img/Bandit/bandit03.png)  
 
     User: bandit4
-    Password: 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe  
+    Password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
 
 -------------------------------------------------------------------
 ### Level 4 &rarr; Level 5
 Once connected to **bandit4**, the password is stored in the only human-readable file in the **inhere** directory (as mentioned
 on the website). I changed the location to **inhere** directory and listed the contents of the directory, I see that there are
 many files starting with **-file** followed by a number, in order to identify the human-readable file, I executed this command
-which tells me the type of each file: <strong>file ./*</strong> .I can see that the file **-file07** is the right one, so I printed its contents.
+which tells me the type of each file: <strong>file ./*</strong> . I can see that the file **-file07** is the right one, so I printed its contents.
   
 ![bandit04](./Img/Bandit/bandit04.png)  
 
     User: bandit5
-    Password: lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+    Password: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
   
 -------------------------------------------------------------------
 ### Level 5 &rarr; Level 6
@@ -67,7 +67,7 @@ Here are the steps I followed:
 ![bandit05](./Img/Bandit/bandit05.png)  
 
     User: bandit6
-    Password: P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+    Password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
   
 -------------------------------------------------------------------
 ### Level 6 &rarr; Level 7
@@ -95,7 +95,7 @@ I printed out the content of the file and piped the output to the **grep** comma
 
 ------------------------------------------------------------------
 ### Level 8 &rarr; Level 9
-The password in a file in the home directory named **data.txt**, the file contains many lines but the password is the only line of text that appears only once. I therefore sorted the file in ascending alphabetical order, then printed only the unique lines, obtaining an output of a single line containing the password:  
+The password is in a file in the home directory named **data.txt**, the file contains many lines but the password is the only line of text that appears only once. I therefore sorted the file in ascending alphabetical order, then printed only the unique lines, obtaining an output of a single line containing the password:  
   
 ![bandit8](/Img/Bandit/bandit08.png)
 
@@ -104,7 +104,7 @@ The password in a file in the home directory named **data.txt**, the file contai
   
 ------------------------------------------------------------------
 ### Level 9 &rarr; Level 10
-The password is located in the file **data.txt**, which doesn't contain text but data, as you can see by executing the following command: **file data.txt**, so we need to use the **strings** command to print all the printable characters in this file, then we need to grep the lines containing the password pattern "preceeded by several **=** characters", which means that the line containing the password contains several (2 or more) **=** characters followed by the password, the password is made up of numbers and letters (upper and lower case): **grep -E "={2,} ?[[:alnum]]"**  
+The password is located in the file **data.txt**, which doesn't contain text but data, as you can see by executing the following command: **file data.txt**, so we need to use the **strings** command to print all the printable characters in this file, then we need to grep the lines containing the password pattern ***preceeded by several **=** characters***, which means that the line containing the password contains several **=** characters (2 or more) followed by the actual password, it is made up of numbers and letters (upper and lower case): **grep -E "={2,} ?[[:alnum]]+"**  
   
 ![bandit9](/Img/Bandit/bandit09.png)  
   
