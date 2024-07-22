@@ -86,21 +86,21 @@ To find the required file, we need to use the **find** command, starting the sea
 ------------------------------------------------------------------
 ### Level 7 &rarr; Level 8
 The password for the next level is in the **data.txt** file next to the word **millionth**.  
-I printed out the content of the file and piped the output to the **grep** command, looking for the word **millionth**.  
+I printed the line containing the word **millionth** using the **grep** command.  
   
 ![bandit7](/Img/Bandit/bandit07.png)  
   
     User: bandit8
-    Password: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+    Password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 
 ------------------------------------------------------------------
 ### Level 8 &rarr; Level 9
-The password is in a file in the home directory named **data.txt**, the file contains many lines but the password is the only line of text that appears only once. I therefore sorted the file in ascending alphabetical order, then printed only the unique lines, obtaining an output of a single line containing the password:  
+The password is in a file in the home directory named **data.txt**, the file contains many lines but the password is the only line of text that appears only once. I therefore sorted the file in ascending alphanumerical order, then printed only the unique lines, obtaining an output of a single line containing the password:  
   
 ![bandit8](/Img/Bandit/bandit08.png)
 
     User bandit9
-    Password: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+    Password: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
   
 ------------------------------------------------------------------
 ### Level 9 &rarr; Level 10
@@ -109,6 +109,6 @@ The password is located in the file **data.txt**, which doesn't contain text but
 ![bandit9](/Img/Bandit/bandit09.png)  
   
     User: bandit10  
-    Password: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s  
+    Password: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey  
   
 ------------------------------------------------------------------
