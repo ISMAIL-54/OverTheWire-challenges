@@ -112,3 +112,13 @@ The password is located in the file **data.txt**, which doesn't contain text but
     Password: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey  
   
 ------------------------------------------------------------------
+### Level 10 &rarr; Level 11
+As mentioned on the website, the password is stored in the **data.txt** file, which contains **base64-encoded** data, as you can see after running the **cat** command. To decode the data and obtain the password, simply run the following command: **decode -d data.txt**  
+  
+![bandit10](/Img/Bandit/bandit10.png)  
+  
+    User: bandit11
+    Password: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+  
+------------------------------------------------------------------
+
