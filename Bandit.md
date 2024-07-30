@@ -113,7 +113,7 @@ The password is located in the file **data.txt**, which doesn't contain text but
   
 ------------------------------------------------------------------
 ### Level 10 &rarr; Level 11
-As mentioned on the website, the password is stored in the **data.txt** file, which contains **base64-encoded** data, as you can see after running the **cat** command. To decode the data and obtain the password, simply run the following command: **decode -d data.txt**  
+As mentioned on the website, the password is stored in the **data.txt** file, which contains **base64-encoded** data, as you can see after running the **cat** command. To decode the data and obtain the password, simply run the following command: **base64 -d data.txt**  
   
 ![bandit10](/Img/Bandit/bandit10.png)  
   
@@ -121,4 +121,13 @@ As mentioned on the website, the password is stored in the **data.txt** file, wh
     Password: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
   
 ------------------------------------------------------------------
+### Level 11 &rarr; Level 12
+The password is in the file **data.txt** in the home directory, the file contains a single line of text, all the characters are rearranged to hide the actual password by rotating the upper and lower case letters by 13 positions. To reverse the order and find the password, we'll use the **tr** command and replace each character with the corresponding character in the next set of 13 characters of the alphabet, for example, **a** will be replaced by **n** and **N** by **A**: **cat data.txt | tr "a-mA-Mn-zN-Z" "n-zN-Za-mA-M"**  
+  
+![bandit11](/Img/Bandit/bandit11.png)  
+
+    User: baandit12
+    Password: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+  
+-----------------------------------------------------------------
 
