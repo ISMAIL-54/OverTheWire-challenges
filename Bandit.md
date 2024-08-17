@@ -125,9 +125,34 @@ As mentioned on the website, the password is stored in the **data.txt** file, wh
 The password is in the file **data.txt** in the home directory, the file contains a single line of text, all the characters are rearranged to hide the actual password by rotating the upper and lower case letters by 13 positions. To reverse the order and find the password, we'll use the **tr** command and replace each character with the corresponding character in the next set of 13 characters of the alphabet, for example, **a** will be replaced by **n** and **N** by **A**: **cat data.txt | tr "a-mA-Mn-zN-Z" "n-zN-Za-mA-M"**  
   
 ![bandit11](/Img/Bandit/bandit11.png)  
-
-    User: baandit12
+  
+    User: bandit12
     Password: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
   
 -----------------------------------------------------------------
+### Level 12 &rarr; Level 13
+The instructions indicate that the password is stored in a file called **data.txt** in the home directory, which is a hexdump of a file that has been repeatdly compressed.  
+To solve this problem and decode the file, we need to decompress it multipel times. But first, we'll create a temporary folder and copy **data.txt** file into it. To do this, we'll execute the following commands:  
+- Create a temporary folder in the /tmp directory: mktemp -d  
+- Copy data.txt file into the temporary folder: cp data.txt /tmp/tmp[id]  
+- Change the directory to the temporary folder: cd /tmp/tmp.[id]  
+  
+![bandit12_01](/Img/Bandit/bandit12_01.png)  
+  
+Convert the contents of the hexadecimal file into binary data using the following command: **xxd -r data.txt > data**, then check the file type obtained. As you can see, it's **gzip-compressed data**. We need to add the **.gz** extension to the **data** file, then decompress it using the following command: **gzip -d data.gz**  
+  
+![bandit12_02](/Img/Bandit/bandit12_02.png)  
+  
 
+Check the data file type again, it's **bzip2 compressed data**, we'll rename the file by adding the **.bz2** extension, then decompress it again: **bzipi2 -d data.gz**  
+  
+![bandt12_03](/Img/Bandit/bandit12_03.png)  
+  
+We'll repeat the same action, checking the file type **data**, then changing its name by adding the extension **.gz**, then decompressing it: **gzip -d data.gz**
+  
+![bandit12_04](/Img/Bandit/bandit12_04.png)  
+  
+After checking the file type again, it's a **tar archive**, as you can see, we'll extract the file directly: **tar -xf data**, then we'll obtain another file named **data5.bin**, and we'll continue on this pattern, if we get a tar file we extract it or if we get a compressed file, we decompress it until we finally get an ASCII file, then we print it to get the password for the next level:
+
+![bandit12_05](/Img/BAndit/bandit12_05.png)  
+  
