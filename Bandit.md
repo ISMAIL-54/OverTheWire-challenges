@@ -132,14 +132,14 @@ The password is in the file **data.txt** in the home directory, the file contain
 -----------------------------------------------------------------
 ### Level 12 &rarr; Level 13
 The instructions indicate that the password is stored in a file called **data.txt** in the home directory, which is a hexdump of a file that has been repeatdly compressed.  
-To solve this problem and decode the file, we need to decompress it multipel times. But first, we'll create a temporary folder and copy **data.txt** file into it. To do this, we'll execute the following commands:  
+To solve this problem and decode the file, we need to decompress it multiple times. But first, we'll create a temporary folder and copy **data.txt** file into it. To do this, we'll execute the following commands:  
 - Create a temporary folder in the **/tmp** directory: **mktemp -d**  
-- Copy **data.txt** file into the temporary folder: **cp data.txt /tmp/tmp[id]**  
+- Copy **data.txt** file into the temporary folder: **cp data.txt /tmp/tmp.[id]**  
 - Change the directory to the temporary folder: **cd /tmp/tmp.[id]**  
   
 ![bandit12_01](/Img/Bandit/bandit12_01.png)  
   
-Convert the contents of the hexadecimal file into binary data using the following command: **xxd -r data.txt > data**, then check the file type obtained. As you can see, it's **gzip-compressed data**. We need to add the **.gz** extension to the **data** file, then decompress it using the following command: **gzip -d data.gz**  
+Convert the contents of the file into binary data using the following command: **xxd -r data.txt > data**, then check the file type obtained. As you can see, it's **gzip compressed data**. We need to add the **.gz** extension to the **data** file, then decompress it using the following command: **gzip -d data.gz**  
   
 ![bandit12_02](/Img/Bandit/bandit12_02.png)  
   
