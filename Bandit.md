@@ -160,4 +160,12 @@ After checking the file type again, it's a **tar archive**, as you can see, we'l
     Password: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn  
   
 ------------------------------------------------------------------------------------------------------
+### Level 13 &rarr; Level 14
+This level is very simple. All we have to do is connect to the local server to access user **bandit14**'s account via ssh using the private key in the file **sshkey.private** located in user **bandit13**'s home directory, so we run the following command: **ssh -p 2220 -i sshkey.private bandit14@localhost**  
+  
+![bandit13_01](/Img/Bandit/bandi13_01.png)  
+  
+Once we're logged in as the **bandit14** user, we print the password file in the following location: **cat /etc/bandit_pass/bandit14**
+  
+![bandit13_02](Img/Bandit/bandit13_02.png)  
   
