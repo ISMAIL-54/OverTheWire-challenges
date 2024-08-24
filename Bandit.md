@@ -169,13 +169,20 @@ Once we're logged in as **bandit14** user, we print the password file in the fol
   
 ![bandit13_02](Img/Bandit/bandit13_02.png)  
   
+    User: bandit14
+    Password: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+  
 ------------------------------------------------------------------------------------------------------
 ### Level 14 &rarr; Level 15
 In this level, we'll use the **nc** command to obtain the password for the next level:  
- - **echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000**  
+ - **echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000** 
+   
 In the above command, we've passed the password for the current level to the **nc** command, which will submit it to the local host on port 30000:  
   
 ![bandit14](/Img/Bandit/bandit14.png)  
+  
+    User: bandit15
+    Password: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
   
 -------------------------------------------------------------------------------------------------------
   
