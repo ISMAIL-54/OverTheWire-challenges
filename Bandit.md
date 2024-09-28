@@ -188,17 +188,17 @@ In the above command, we've passed the password for the current level to the **n
 ### Level 15 &rarr; Level 16  
 The next level password can be obtained by submitting the current level password to **localhost** on port **30001** using SSL/TLS encryption. To do so, we need to use an SSL/TLS client using **openssl** command :  
 
-    openssl command [options...] [parameters...]  
+    > openssl command [options...] [parameters...]  
 
-Browsing the man page, I found a command to create an SSL\TLS client **s_client**, we can specify the host and port to connect to as parameters:  
+Browsing the man page, I found a command to create an SSL\TLS client (**s_client**), we can specify the host and port to connect to as parameters:  
     
     openssl s_client localhost:30001
 
-After executing the command, we receive an SSL/TLS certificate as output, the SSL/TLS handshake has been completed: 
+After executing the command, we first received an SSL/TLS certificate from the server, then the SSL/TLS handshake took place.
   
 ![bandit15](/Img/Bandit/bandit15_01.png)  
   
-we can now communicate with the server, it's waiting for us to enter a block of characters, I entered the password, and got the password for the next level:  
+We can now communicate with the server, it's waiting for us to enter a block of characters, I entered the password, and got the password for the next level:  
   
 ![bandit15](/Img/Bandit/bandit15_02.png)  
   
