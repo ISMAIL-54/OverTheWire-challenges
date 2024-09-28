@@ -261,3 +261,14 @@ Great! The credentials for the next level are in fact an SSH private key:
     -----END RSA PRIVATE KEY-----
 
 ---------------------------------------------------------------------------------------
+### Level 17 &rarr; Level 18
+After connecting to **bandit17** using ssh private key, next level password is stored in **passwords.new**, and is the only line that has changed between **passwords.old** and **passwords.new**. To find this line, we'll use **diff** command as follows:
+  
+![bandit17](/Img/Bandit/bandit17.png)  
+  
+The above command outputs the line that differs between the two files. The one on the left belongs to **passwords.new**, hence the password for the next level.
+  
+  User: bandit18
+  Password: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+  
+--------------------------------------------------------------------------------------
