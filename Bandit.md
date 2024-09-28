@@ -203,11 +203,12 @@ We can now communicate with the server, it's waiting for us to enter a block of 
 ![bandit15_02](/Img/Bandit/bandit15_02.png)  
   
     User: bandit16
-    Password: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+    Password: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx  
+
 -------------------------------------------------------------------------------------------------------
 ### Level 16 &rarr; Level 17
-As the website indicates, top-level credentials can be obtained by sending the current password to **localhost** in the range of ports **31000** to **32000**.  
-First, we need to scan the ports to find out which of these ports has a listening server, we'll do this using **nmap** tool :
+As the website indicates, next level credentials can be obtained by sending the current password to **localhost** in the range of ports **31000** to **32000**.  
+First, we need to scan the ports to find out which of them have a listening server, we'll do this using **nmap** tool :
     
     nmap -sV -p31000-32000 localhost
   
@@ -215,19 +216,19 @@ The above command will scan all ports from **31000** to **32000** and display th
   
 ![bandit16_01](/Img/Bandit/bandit16_01.png)  
   
-We can clearly see that 5 ports are in listening mode, 2 of them have SSL encryption, 31518 and 31790, the first has the echo service, which means it will return whatever I send to it. The second has an unknown service running, so let's take the only option we have:  
+We can clearly see that 5 ports are in listening mode, 2 of them have SSL encryption, 31518 and 31790, the first has echo service, which means it will return whatever I send to it. The second has an unknown service running, so let's go with the second option:  
   
 ![bandit16_02](/Img/Bandit/bandit16_02.png)  
   
-Now that we're connected in, let's submit the current password:  
+Now that we're connected, let's submit the current password:  
   
 ![bandit16_03](/Img/Bandit/bandit16_03.png)  
   
-We got KEYUPDATE, so I checked CONNECTED COMMANDS on the man page, and found that if **-quiet** or **-ign-eof** are given, every first letter of the submitted line will be interpreted as a command. The first letter of the password is “k”, this actually a command that will send a key update message to the server, hence the “KEYUPDATE” response. Let's try again, but this time we'll use **-quiet** option:  
+We got KEYUPDATE, so I checked CONNECTED COMMANDS on the man page, and found that if neither **-quiet** nor **-ign-eof** have been given, every first letter of the submitted line will be interpreted as a command. The first letter of the password is “k”, this actually a command that will send a key update message to the server, hence the “KEYUPDATE” response. Let's try again, but this time we'll use **-quiet** option:  
   
 ![bandit16_04](/Img/Bandit/bandit16_04.png)  
   
-Great! The credentials for the next level are in fact private keys:  
+Great! The credentials for the next level are in fact an SSH private key:  
   
     User: bandit17
     Private key:    
