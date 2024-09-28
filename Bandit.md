@@ -187,20 +187,76 @@ In the above command, we've passed the password for the current level to the **n
 -------------------------------------------------------------------------------------------------------
 ### Level 15 &rarr; Level 16  
 The next level password can be obtained by submitting the current level password to **localhost** on port **30001** using SSL/TLS encryption. To do so, we need to use an SSL/TLS client using **openssl** command :  
-
-    > openssl command [options...] [parameters...]  
-
+  
+> openssl command [options...] [parameters...]  
+  
 Browsing the man page, I found a command to create an SSL\TLS client (**s_client**), we can specify the host and port to connect to as parameters:  
     
-    openssl s_client localhost:30001
-
-After executing the command, we first received an SSL/TLS certificate from the server, then the SSL/TLS handshake took place.
+    openssl s_client localhost:30001  
   
-![bandit15](/Img/Bandit/bandit15_01.png)  
+After executing the command, we first received an SSL/TLS certificate from the server, then the SSL/TLS handshake took place:  
+  
+![bandit15_01](/Img/Bandit/bandit15_01.png)  
   
 We can now communicate with the server, it's waiting for us to enter a block of characters, I entered the password, and got the password for the next level:  
   
-![bandit15](/Img/Bandit/bandit15_02.png)  
+![bandit15_02](/Img/Bandit/bandit15_02.png)  
   
     User: bandit16
     Password: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+-------------------------------------------------------------------------------------------------------
+### Level 16 &rarr; Level 17
+As the website indicates, top-level credentials can be obtained by sending the current password to **localhost** in the range of ports **31000** to **32000**.  
+First, we need to scan the ports to find out which of these ports has a listening server, we'll do this using **nmap** tool :
+    
+    nmap -sV -p31000-32000 localhost
+  
+The above command will scan all ports from **31000** to **32000** and display the service running on each open port. See the result:
+  
+![bandit16_01](/Img/Bandit/bandit16_01.png)  
+  
+We can clearly see that 5 ports are in listening mode, 2 of them have SSL encryption, 31518 and 31790, the first has the echo service, which means it will return whatever I send to it. The second has an unknown service running, so let's take the only option we have:  
+  
+![bandit16_02](/Img/Bandit/bandit16_02.png)  
+  
+Now that we're connected in, let's submit the current password:  
+  
+![bandit16_03](/Img/Bandit/bandit16_03.png)  
+  
+We got KEYUPDATE, so I checked CONNECTED COMMANDS on the man page, and found that if **-quiet** or **-ign-eof** are given, every first letter of the submitted line will be interpreted as a command. The first letter of the password is “k”, this actually a command that will send a key update message to the server, hence the “KEYUPDATE” response. Let's try again, but this time we'll use **-quiet** option:  
+  
+![bandit16_04](/Img/Bandit/bandit16_04.png)  
+  
+Great! The credentials for the next level are in fact private keys:  
+  
+    User: bandit17
+    Private key:    
+        -----BEGIN RSA PRIVATE KEY-----
+    MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+    imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+    Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+    DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+    JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+    x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+    KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+    J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+    d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+    YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+    vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
+    +TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+    8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+    SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+    HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+    SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+    R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+    Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+    R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+    L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+    blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+    YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+    77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+    dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+    vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+    -----END RSA PRIVATE KEY-----
+
+---------------------------------------------------------------------------------------
