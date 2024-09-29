@@ -268,17 +268,19 @@ After connecting to **bandit17** using ssh private key, next level password is s
   
 The above command outputs the line that differs between the two files. The one on the left belongs to **passwords.new**, hence the password for the next level.
   
-  User: bandit18  
-  Password: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO   
+    User: bandit18  
+    Password: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO   
   
 --------------------------------------------------------------------------------------
 ### Level 18 &rarr; Level 19  
 This level is easy. I tried connecting to bandit18 then displaying the content of **readme** file by disconnecting and saying byebye! All I have to do is specify the command to be executed at the same time as the ssh command, as follows:  
   
+> ssh -p 2220 bandit18@bandit.labs.overthewire.org cat readme
+  
 ![bandit18](/Img/Bandit/bandit18.png)  
   
-  User: bandit19  
-  Password: cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8  
+    User: bandit19  
+    Password: cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8  
   
 -------------------------------------------------------------------------------------
 ### Level 19 &rarr; Level 20
