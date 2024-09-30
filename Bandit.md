@@ -273,9 +273,10 @@ The above command outputs the line that differs between the two files. The one o
   
 --------------------------------------------------------------------------------------
 ### Level 18 &rarr; Level 19  
-This level is easy. I tried connecting to bandit18 then displaying the content of **readme** file by disconnecting and saying byebye! All I have to do is specify the command to be executed at the same time as the ssh command, as follows:  
-  
-> ssh -p 2220 bandit18@bandit.labs.overthewire.org cat readme
+This level is easy. I tried to connect to **bandit18** and then display the contents of the **readme** file, but the session was disconnected, saying byebye!  
+To overcome this, I simply specified the command to be executed at the same time as the ssh command, as follows:   
+
+    ssh -p 2220 bandit18@bandit.labs.overthewire.org cat readme
   
 ![bandit18](/Img/Bandit/bandit18.png)  
   
