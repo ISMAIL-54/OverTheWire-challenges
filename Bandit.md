@@ -190,7 +190,7 @@ The next level password can be obtained by submitting the current level password
   
 > openssl command [options...] [parameters...]  
   
-Browsing the man page, I found a command to create an SSL\TLS client (**s_client**), we can specify the host and port to connect to as parameters:  
+Browsing the man page, I found a command to create an SSL\TLS client **s_client**. we can specify the host and port to connect to as parameters:  
     
     openssl s_client localhost:30001  
   
@@ -285,4 +285,9 @@ To overcome this, I simply specified the command to be executed at the same time
   
 -------------------------------------------------------------------------------------
 ### Level 19 &rarr; Level 20
-
+After logging into **bandit19**, the password for the next level is stored in **/etc/bandit_pass/bandit20**. We can't print its contents, as the file belongs to **bandit20** user. However, there is a binary file in the home directory [ **bandit20-do** ] which we can use to run a command as another user. We can run this file even if it also belongs to user **bandit20**, as it has setuid bit which allows us to run it with under the owner's permission. so here's how to resolve this level, we're going to issue **cat** command using the binary file and specifying the location of the password file as its parameter:  
+  
+![bandit19](/Img/Bandit/bandit19.png)  
+  
+    User: bandit19
+    Password: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
